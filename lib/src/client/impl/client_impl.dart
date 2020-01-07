@@ -40,6 +40,9 @@ class _ClientImpl implements Client {
       fs = SecureSocket.connect(
         settings.host,
         settings.port,
+        onBadCertificate: ((X509Certificate cert) {
+          return true;
+        }),
         context: settings.tlsContext,
       );
     } else {
